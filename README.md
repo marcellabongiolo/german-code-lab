@@ -1,36 +1,95 @@
-<div align="center">
+# 🇩🇪 German Code Lab
 
-# 🇩🇪 GERMAN CODE LAB 🥨
+Um pequeno laboratório em Python para praticar **processamento de vocabulário em alemão** por meio de estruturas de dados, consultas e validações.
 
-<img src="https://img.shields.io/badge/FOCUS-TEXT_PROCESSING_%26_CULTURE-red?style=for-the-badge" />
-<img src="https://img.shields.io/badge/LANGUAGE-PYTHON-yellow?style=for-the-badge&logo=python&logoColor=black" />
-<img src="https://img.shields.io/badge/STATUS-ACTIVE-success?style=for-the-badge" />
+> Projeto educacional de programação e estudo de idioma. O banco de dados é local e contém apenas exemplos selecionados.
 
-> *“Automating and exploring linguistic patterns through code.”*
+## 🎯 Objetivos
 
-</div>
+- praticar Python com um projeto temático;
+- organizar vocabulário em estruturas reutilizáveis;
+- consultar artigos, plurais e significados;
+- aplicar validação de entrada;
+- escrever testes automatizados;
+- manter uma estrutura de projeto adequada para portfólio.
 
----
+## ✨ Funcionalidades
 
-## 🔬 About This Repository
+- consulta de substantivos em alemão;
+- apresentação do artigo definido;
+- informação de plural;
+- significado em português;
+- tratamento de termos desconhecidos;
+- validação de entradas vazias;
+- demonstração executável pelo terminal;
+- testes com `unittest`;
+- GitHub Actions para execução automática dos testes.
 
-Welcome to my **german-code-lab**! This repository combines software logic with German language structures, offering tools for text analysis, vocabulary formatting, and cultural data processing.
+## ▶️ Como executar
 
-### 📂 What You Will Find Here:
-* **Text Analysis:** Scripts that process German compound words and articles (`der`, `die`, `das`).
-* **Vocabulary Automation:** Dictionaries and utilities for structured language learning.
-* **Clean Logic:** Modular Python scripts applying software best practices.
+```bash
+git clone https://github.com/marcellabongiolo/german-code-lab.git
+cd german-code-lab
+python vocabulario_alemao.py
+```
 
----
+Execute os testes:
 
-## 👩‍💻 Author
+```bash
+python -m unittest discover -s tests -v
+```
 
-<div align="center">
+O projeto não possui dependências externas.
 
-**Marcella Bongiolo**  
-*Future Software Engineer | UNESC Student*
+## 📁 Estrutura
 
-[![GitHub Badge](https://img.shields.io/badge/GitHub-marcellabongiolo-181717?style=flat-square&logo=github)](https://github.com/marcellabongiolo)
-[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-marcellabongiolo-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/marcellabongiolo)
+```text
+german-code-lab/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── tests/
+│   └── test_vocabulario_alemao.py
+├── .gitignore
+├── LICENSE
+├── README.md
+└── vocabulario_alemao.py
+```
 
-</div>
+## 🧠 Conceitos praticados
+
+- Python;
+- dicionários e estruturas de dados;
+- classes e métodos;
+- type hints;
+- normalização de entradas;
+- validação;
+- testes automatizados;
+- organização de código;
+- GitHub Actions.
+
+## 📚 Vocabulário atual
+
+A base inicial contém exemplos como `Softwareentwicklung`, `Wissenschaft`, `Architektur` e `Schlüssel`.
+
+A aplicação deve ser entendida como um laboratório de estudo, não como um dicionário completo de alemão.
+
+## 🚀 Próximos passos possíveis
+
+- ampliar a base de vocabulário;
+- adicionar busca sem diferenciar maiúsculas e minúsculas;
+- separar os dados linguísticos da lógica da aplicação;
+- adicionar categorias como tecnologia, ciência e cotidiano;
+- incluir informações regionais quando houver fontes adequadas;
+- criar uma interface simples para consultas.
+
+## 👩‍💻 Autora
+
+**Marcella Bongiolo**
+
+- GitHub: https://github.com/marcellabongiolo
+- LinkedIn: https://linkedin.com/in/marcellabongiolo
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
