@@ -1,70 +1,86 @@
+"""Gerenciador de vocabulário em alemão.
+
+O módulo mantém uma pequena base local de substantivos em alemão e permite
+consultar artigo, plural e significado em português.
 """
-Módulo: Processador de Vocabulário e Artigos em Alemão
-Autor: Marcella Bongiolo
-Descrição: Script utilitário para gerenciar substantivos em alemão, 
-           validando seus artigos corretos (Der/Die/Das) e plural.
-"""
+
+VOCABULARIO = {
+    "Softwareentwicklung": {
+        "artigo": "die",
+        "plural": "Softwareentwicklungen",
+        "significado": "Desenvolvimento de software",
+    },
+    "Wissenschaft": {
+        "artigo": "die",
+        "plural": "Wissenschaften",
+        "significado": "Ciência",
+    },
+    "Architektur": {
+        "artigo": "die",
+        "plural": "Architekturen",
+        "significado": "Arquitetura",
+    },
+    "Schlüssel": {
+        "artigo": "der",
+        "plural": "Schlüssel",
+        "significado": "Chave",
+    },
+}
+
 
 class GerenciadorVocabularioAlemao:
-    """Gerencia uma base de dados local de termos em alemão com regras e validações."""
-    def __init__(self):
-        # Dicionário estruturado: Palavra -> {"artigo": X, "plural": Y, "significado": Z}
-        self.vocabulario = {
-            "Softwareentwicklung": {
-                "artigo": "die", 
-                "plural": "Softwareentwicklungen", 
-                "significado": "Desenvolvimento de software"
-            },
-            "Wissenschaft": {
-                "artigo": "die", 
-                "plural": "Wissenschaften", 
-                "significado": "Ciência"
-            },
-            "Architektur": {
-                "artigo": "die", 
-                "plural": "Architekturen", 
-                "significado": "Arquitetura"
-            },
-            "Schlüssel": {
-                "artigo": "der", 
-                "plural": "Schlüssel", 
-                "significado": "Chave"
-            }
-        }
+    """Consulta exemplos de vocabulário alemão."""
+
+    def __init__(self, vocabulario=None):
+        self.vocabulario = vocabulario if vocabulario is not None else VOCABULARIO.copy()
 
     def consultar_termo(self, termo: str) -> str:
-        """Busca um termo e retorna sua ficha técnica formatada em alemão."""
-        termo_formatado = termo.capitalize()
-        
-        if termo_formatado in self.vocabulario:
-            dados = self.vocabulario[termo_formatado]
-            artigo = dados["artigo"].capitalize()
-            return (
-                f"🇩🇪 Termo: {artigo} {termo_formatado}\n"
-                f"📦 Plural: {dados['plural']}\n"
-                f"💡 Significado: {dados['significado']}"
-            )
-        else:
-            return f"⚠️ O termo '{termo}' ainda não foi cadastrado no laboratório."
+        """Retorna uma ficha formatada para um termo conhecido."""
+        termo_limpo = termo.strip()
 
-def main():
-    print("=" * 60)
-    print(" 🥨 GERMAN CODE LAB: PROCESSADOR DE VOCABULÁRIO 📚")
-    print("=" * 60)
+        if not termo_limpo:
+            raise ValueError("O termo não pode estar vazio.")
 
+        termo_normalizado = next(
+            (
+                palavra
+                for palavra in self.vocabulario
+                if palavra.casefold() == termo_limpo.casefold()
+            ),
+            None,
+        )
+
+        if termo_normalizado is None:
+            return f"O termo '{termo_limpo}' ainda não foi cadastrado no laboratório."
+
+        dados = self.vocabulario[termo_normalizado]
+        artigo = dados["artigo"]
+        return (
+            f"Termo: {artigo} {termo_normalizado}\n"
+            f"Plural: {dados['plural']}\n"
+            f"Significado: {dados['significado']}"
+        )
+
+
+def main() -> None:
+    """Executa uma demonstração do gerenciador."""
     sistema = GerenciadorVocabularioAlemao()
+    termos_para_testar = [
+        "Softwareentwicklung",
+        "Architektur",
+        "Schlüssel",
+        "Python",
+    ]
 
-    # Testando consultas com termos técnicos e do idioma
-    termos_para_testar = ["Softwareentwicklung", "Architektur", "Schlüssel", "Python"]
+    print("=" * 60)
+    print("GERMAN CODE LAB")
+    print("=" * 60)
 
     for palavra in termos_para_testar:
         print(f"\nBuscando por: '{palavra}'")
         print(sistema.consultar_termo(palavra))
         print("-" * 40)
-           
 
-    print("=" * 60)
 
 if __name__ == "__main__":
     main()
-Add German vocabulary manager script
