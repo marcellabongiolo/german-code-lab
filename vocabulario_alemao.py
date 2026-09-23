@@ -61,8 +61,10 @@ def main():
         print(f"\nBuscando por: '{palavra}'")
         print(sistema.consultar_termo(palavra))
         print("-" * 40)
+           
 
     print("=" * 60)
 
 if __name__ == "__main__":
     main()
+Add German vocabulary manager script
